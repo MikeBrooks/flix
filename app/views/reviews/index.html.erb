@@ -1,0 +1,37 @@
+<header id="content-header">
+	<h1> <%= pluralize(@reviews.size, "Review") %> for <%= link_to(@movie.title, movie_path(@movie)) %> </h1>
+</header>
+
+
+<ol id="reviews">
+	<h2>Pragmatic Studio list of reviews - with CSS template:</h2>
+  <% @reviews.each do |review| %>
+    <li>
+      <span class="review"><%= pluralize(review.stars, 'star') %></span>
+      <span class="user">by <%= review.name %></span>
+      <span class="date"><%= time_ago_in_words(review.created_at) %> ago</span>
+      <p>
+        &quot;<%= review.comment %>&quot;
+      </p>
+
+      
+      <p>
+        <%= link_to('Edit', edit_movie_review_path(@movie, review),
+                      class: "button") %>
+                      
+
+        <%= link_to('Delete', movie_review_path(@movie, review), 
+                      method: :delete,
+                      class: "button",
+                      data: { confirm: 'Are you sure?' }) %>
+      </p>
+
+
+    </li>
+  <% end %>
+</ol>
+
+
+
+
+

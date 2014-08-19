@@ -1,0 +1,5 @@
+<header>
+  <h2> <%= @movie.reviews.name %>'s Review for <%= link_to(@movie.title, movie_path(@movie)) %> </h2> 
+</header>
+
+<%= render "form" %>
